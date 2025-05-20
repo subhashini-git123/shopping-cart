@@ -1,23 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchProducts, addToCart, removeFromCart } from './redux/cartSlice';
 
 function App() {
+  const dispatch = useDispatch();
+  const { products, cart } = useSelector(state => state.cart);
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <h2>Products</h2>
+
+
+      {products.map(product => (
+        <div className="product" key={product.id}>
+          <p>{product.title} - ${product.price.toFixed(2)}</p>
+          <button onClick={() => dispatch(addToCart(product))}>Add to Cart</button>
+        </div>
+      ))}
+
+      <h2>Cart</h2>
+      {cart.length === 0 ? (
+        <p className="empty">Your cart is empty.</p>
+      ) : (
+        cart.map(product => (
+          <div className="cart-item" key={product.id}>
+            <span>{product.title} - ${product.price.toFixed(2)}</span>
+            <button onClick={() => dispatch(removeFromCart(product.id))}>Remove</button>
+          </div>
+        ))
+      )}
     </div>
   );
 }
