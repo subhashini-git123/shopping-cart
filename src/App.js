@@ -1,56 +1,10 @@
-// import React, { useEffect } from 'react';
-// import { useSelector, useDispatch } from 'react-redux';
-// import { fetchProducts, addToCart, removeFromCart } from './redux/cartSlice';
-
-// function App() {
-//   const dispatch = useDispatch();
-//   const { products, cart } = useSelector(state => state.cart);
-
-//   useEffect(() => {
-//     dispatch(fetchProducts());
-//   }, [dispatch]);
-
-//   return (
-//     <div className="container">
-//       <h2>Products</h2>
-
-
-//       {products.map(product => (
-//         <div className="product" key={product.id}>
-//           <p>{product.title} - ${product.price.toFixed(2)}</p>
-//           <button onClick={() => dispatch(addToCart(product))}>Add to Cart</button>
-//         </div>
-//       ))}
-
-//       <h2>Cart</h2>
-//       {cart.length === 0 ? (
-//         <p className="empty">Your cart is empty.</p>
-//       ) : (
-//         cart.map(product => (
-//           <div className="cart-item" key={product.id}>
-//             <span>{product.title} - ${product.price.toFixed(2)}</span>
-//             <button onClick={() => dispatch(removeFromCart(product.id))}>Remove</button>
-//           </div>
-//         ))
-//       )}
-//     </div>
-//   );
-// }
-
-// export default App;
-
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  fetchProducts,
-  addToCart,
-  removeOneFromCart
- 
-} from './redux/cartSlice';
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProducts, addToCart, removeOneFromCart } from "./redux/cartSlice";
 
 const App = () => {
   const dispatch = useDispatch();
-  const { products, cart, status } = useSelector(state => state.cart);
+  const { products, cart, status } = useSelector((state) => state.cart);
 
   useEffect(() => {
     dispatch(fetchProducts());
@@ -59,13 +13,17 @@ const App = () => {
   return (
     <div className="container">
       <h2>Products</h2>
-      {status === 'loading' && <p>Loading...</p>}
-      {status === 'failed' && <p className="empty">Failed to load products.</p>}
+      {status === "loading" && <p>Loading...</p>}
+      {status === "failed" && <p className="empty">Failed to load products.</p>}
 
-      {products.map(product => (
+      {products.map((product) => (
         <div className="product" key={product.id}>
-          <p>{product.title} - ${product.price.toFixed(2)}</p>
-          <button onClick={() => dispatch(addToCart(product))}>Add to Cart</button>
+          <p>
+            {product.title} - ${product.price.toFixed(2)}
+          </p>
+          <button onClick={() => dispatch(addToCart(product))}>
+            Add to Cart
+          </button>
         </div>
       ))}
 
@@ -73,15 +31,16 @@ const App = () => {
       {cart.length === 0 ? (
         <p className="empty">Your cart is empty.</p>
       ) : (
-        cart.map(item => (
+        cart.map((item) => (
           <div className="cart-item" key={item.id}>
             <p>
               {item.title} - ${item.price.toFixed(2)} * {item.quantity}
             </p>
             <div>
-              <button onClick={() => dispatch(removeOneFromCart(item.id))}>−</button>
+              <button onClick={() => dispatch(removeOneFromCart(item.id))}>
+                −
+              </button>
               <button onClick={() => dispatch(addToCart(item))}>+</button>
-             
             </div>
           </div>
         ))
