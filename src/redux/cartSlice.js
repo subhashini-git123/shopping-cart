@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 export const fetchProducts = createAsyncThunk(
   "cart/fetchProducts",
   async () => {
-    const res = await fetch("https://fakestoreapi.com/products?limit=3");
+    const res = await fetch("https://fakestoreapi.com/products");
     return res.json();
   }
 );
@@ -25,12 +25,11 @@ const cartSlice = createSlice({
     },
     removeOneFromCart: (state, action) => {
       const item = state.cart.find((i) => i.id === action.payload);
-      if (item) {
-        if (item.quantity > 1) {
-          item.quantity -= 1;
-        } else {
-          state.cart = state.cart.filter((i) => i.id !== action.payload);
-        }
+
+      if (item.quantity > 1) {
+        item.quantity -= 1;
+      } else {
+        state.cart = state.cart.filter((i) => i.id !== action.payload);
       }
     },
   },

@@ -1,53 +1,110 @@
-/* body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #f4f4f4;
-  margin: 0;
-  padding: 20px;
+.navbar {
+  background-color: #333;
+  padding: 10px 30px;
 }
 
-h1 {
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+.nav-text {
+  text-decoration: none;
+  color: white;
+  padding: 10px;
+}
+.nav-text:hover {
+  border-radius: 4px;
+  background-color: #6f6fed;
+}
+/* ......products..... */
+.product-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #f9f9f9;
+}
+
+.product-heading {
+  font-size: 2rem;
   text-align: center;
+  margin-bottom: 2rem;
   color: #333;
 }
-
-.container {
-  max-width: 800px;
-  margin: auto;
-  background: white;
-  padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-h2 {
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 5px;
-  color: #444;
-}
-
-.product, .cart-item {
+.product-item {
   display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+.product-info {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 1.2rem;
+  border-radius: 10px;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
-  padding: 10px 0;
-  border-bottom: 1px solid #eee;
 }
 
-button {
+.product-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.product-price {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.add-button {
   background-color: #007bff;
-  border: none;
-  padding: 8px 12px;
   color: white;
-  border-radius: 4px;
-  cursor: pointer;
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 5px;
   font-size: 0.9rem;
 }
 
-button:hover {
+.add-button:hover {
   background-color: #0056b3;
 }
 
-.empty {
-  color: #777;
-  font-style: italic;
-} */
+/* ..cart... */
+.cart-item {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 1.2rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cart-item button {
+  background-color: #007bff;
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  margin: 0 0.25rem;
+}
+
+.cart-item button:hover {
+  background-color: #0056b3;
+}
+
+.cart-item div {
+  display: flex;
+  align-items: center;
+}
+
+.cart-title {
+  text-align: center;
+  font-size: 2rem;
+}
